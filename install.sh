@@ -42,17 +42,22 @@ echo "✅ pip is ready!"
 
 # Step 5: Install build tools for Python packages
 echo ""
-echo -e "${YELLOW}[5/6] Installing Python build tools...${NC}"
+echo -e "${YELLOW}[5/7] Installing Python build tools...${NC}"
 pip install setuptools wheel
 
-# Step 6: Install Aider
+# Step 6: Install NumPy 2.x (Python 3.13 compatible)
 echo ""
-echo -e "${YELLOW}[6/6] Installing Aider Chat...${NC}"
+echo -e "${YELLOW}[6/7] Installing NumPy (Python 3.13 compatible)...${NC}"
+pip install numpy>=2.0.0
+
+# Step 7: Install Aider
+echo ""
+echo -e "${YELLOW}[7/7] Installing Aider Chat...${NC}"
 pip install aider-chat
 
-# Step 7: Setup API Key
+# Step 8: Setup API Key
 echo ""
-echo -e "${YELLOW}[7/7] Setting up API Key...${NC}"
+echo -e "${YELLOW}[8/8] Setting up API Key...${NC}"
 
 echo ""
 echo -e "${CYAN}╔══════════════════════════════════════════════════════════╗${NC}"
