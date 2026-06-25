@@ -45,15 +45,20 @@ echo ""
 echo -e "${YELLOW}[5/7] Installing Python build tools...${NC}"
 pip install setuptools wheel
 
-# Step 6: Install NumPy 2.x (Python 3.13 compatible)
+# Step 6: Install compatible dependencies for Python 3.13
 echo ""
-echo -e "${YELLOW}[6/7] Installing NumPy (Python 3.13 compatible)...${NC}"
-pip install numpy>=2.0.0
+echo -e "${YELLOW}[6/7] Installing compatible dependencies...${NC}"
+pip install "numpy>=2.0.0" "aiohttp>=3.9.0" "requests>=2.31.0" "urllib3>=2.0.0"
 
-# Step 7: Install Aider
+# Step 7: Install Aider (ignoring dependency conflicts)
 echo ""
 echo -e "${YELLOW}[7/7] Installing Aider Chat...${NC}"
-pip install aider-chat
+pip install aider-chat --no-deps
+
+# Install remaining dependencies one by one
+echo ""
+echo "Installing remaining dependencies..."
+pip install GitPython prompt-toolkit Pygments rich tqdm configargparse PyYAML networkx diskcache pytest tiktoken
 
 # Step 8: Setup API Key
 echo ""
