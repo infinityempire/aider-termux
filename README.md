@@ -15,6 +15,21 @@ cd aider-termux
 bash install.sh
 ```
 
+## 🔑 API Key Setup
+
+The installer will prompt you to choose your AI provider:
+
+| Provider | Model | Free Tier |
+|----------|-------|-----------|
+| 🤖 **Google AI Studio** | Gemini 2.5 Flash | ✅ Yes! |
+| 🔷 OpenAI | GPT-4o | ❌ No |
+| 🟤 Anthropic | Claude Sonnet | ❌ No |
+
+### Get Your Free Google AI Key:
+1. Go to: https://aistudio.google.com/app/apikey
+2. Click "Create API Key"
+3. Copy and paste during installation
+
 ## 📋 What Gets Installed
 
 - Python 3.11+
@@ -37,8 +52,11 @@ Aider is an AI pair programming tool that lets you chat with GPT-4o/Claude and e
 After installation, use Aider like this:
 
 ```bash
+# Load your API key
+source ~/.bashrc
+
 # Start coding with AI
-aider <your-file.py>
+aider your-file.py
 
 # Or initialize a new project
 aider --init
@@ -55,6 +73,13 @@ pip install aider-chat
 **If Python version issues:**
 ```bash
 python --version  # Make sure it's 3.9+
+```
+
+**To change API key later:**
+```bash
+nano ~/.bashrc
+# Edit the GOOGLE_API_KEY line
+source ~/.bashrc
 ```
 
 ## 📄 License
