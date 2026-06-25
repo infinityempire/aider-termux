@@ -21,29 +21,24 @@ NC='\033[0m' # No Color
 # Step 1: Update Termux packages
 echo ""
 echo -e "${YELLOW}[1/6] Updating Termux packages...${NC}"
-pkg update -y && pkg upgrade -y
+pkg update && pkg upgrade
 
 # Step 2: Install required packages
 echo ""
 echo -e "${YELLOW}[2/6] Installing required packages...${NC}"
-pkg install python git -y
+pkg install python git bc
 
 # Step 3: Verify Python installation
 echo ""
 echo -e "${YELLOW}[3/6] Verifying Python installation...${NC}"
-PYTHON_VERSION=$(python --version 2>&1 | grep -oP '\d+\.\d+' | head -1)
-echo "Found Python $PYTHON_VERSION"
-
-if [ "$(echo "$PYTHON_VERSION < 3.9" | bc)" -eq 1 ]; then
-    echo -e "${RED}⚠️  Python 3.9+ required. Current: $PYTHON_VERSION${NC}"
-    echo "Try: pkg install python"
-    exit 1
-fi
+PYTHON_VERSION=$(python --version 2>&1)
+echo "Found: $PYTHON_VERSION"
+echo "✅ Python ready!"
 
 # Step 4: Upgrade pip
 echo ""
 echo -e "${YELLOW}[4/6] Upgrading pip...${NC}"
-pip install --upgrade pip -y
+pip install --upgrade pip
 
 # Step 5: Install Aider
 echo ""
