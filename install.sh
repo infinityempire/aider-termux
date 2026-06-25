@@ -35,10 +35,10 @@ PYTHON_VERSION=$(python --version 2>&1)
 echo "Found: $PYTHON_VERSION"
 echo "✅ Python ready!"
 
-# Step 4: Upgrade pip
+# Step 4: Skip pip upgrade (Termux manages pip)
 echo ""
-echo -e "${YELLOW}[4/6] Upgrading pip...${NC}"
-pip install --upgrade pip
+echo -e "${YELLOW}[4/6] Skipping pip upgrade (managed by Termux)...${NC}"
+echo "✅ pip is ready!"
 
 # Step 5: Install Aider
 echo ""
