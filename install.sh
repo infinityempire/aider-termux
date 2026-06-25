@@ -26,7 +26,7 @@ pkg update && pkg upgrade
 # Step 2: Install required packages
 echo ""
 echo -e "${YELLOW}[2/6] Installing required packages...${NC}"
-pkg install python git bc
+pkg install python git bc make cmake clang
 
 # Step 3: Verify Python installation
 echo ""
@@ -40,14 +40,19 @@ echo ""
 echo -e "${YELLOW}[4/6] Skipping pip upgrade (managed by Termux)...${NC}"
 echo "✅ pip is ready!"
 
-# Step 5: Install Aider
+# Step 5: Install build tools for Python packages
 echo ""
-echo -e "${YELLOW}[5/6] Installing Aider Chat...${NC}"
+echo -e "${YELLOW}[5/6] Installing Python build tools...${NC}"
+pip install setuptools wheel
+
+# Step 6: Install Aider
+echo ""
+echo -e "${YELLOW}[6/6] Installing Aider Chat...${NC}"
 pip install aider-chat
 
-# Step 6: Setup API Key
+# Step 7: Setup API Key
 echo ""
-echo -e "${YELLOW}[6/6] Setting up API Key...${NC}"
+echo -e "${YELLOW}[7/7] Setting up API Key...${NC}"
 
 echo ""
 echo -e "${CYAN}╔══════════════════════════════════════════════════════════╗${NC}"
