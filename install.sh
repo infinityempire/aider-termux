@@ -57,93 +57,38 @@ echo ""
 echo -e "${YELLOW}[5/7] Installing dependencies...${NC}"
 pip install "numpy>=2.0.0" "aiohttp>=3.9.0" "requests>=2.31.0" "urllib3>=2.0.0"
 
-# Step 6: Install Aider
+# Step 6: Install Aider with Google AI support
 echo ""
 echo -e "${YELLOW}[6/7] Installing Aider Chat...${NC}"
 pip install aider-chat --no-deps
-pip install GitPython prompt-toolkit Pygments rich tqdm configargparse PyYAML networkx diskcache pytest tiktoken openai
+pip install GitPython prompt-toolkit Pygments rich tqdm configargparse PyYAML networkx diskcache pytest tiktoken google-generativeai
 
-# Step 7: Setup API Key
+# Step 7: Setup Google AI API Key
 echo ""
-echo -e "${YELLOW}[7/7] Setting up API Key...${NC}"
+echo -e "${YELLOW}[7/7] Setting up Google AI Studio...${NC}"
 
 echo ""
-echo -e "${CYAN}╔══════════════════════════════════════════════════════════╗${NC}"
-echo -e "${CYAN}║            🔑 Choose Your AI Provider                  ║${NC}"
-echo -e "${CYAN}╚══════════════════════════════════════════════════════════╝${NC}"
+echo -e "${CYAN}🤖 Google AI Studio Setup${NC}"
 echo ""
-echo "  1) 🤖 Google AI Studio (Gemini) - FREE TIER AVAILABLE"
-echo "  2) 🔷 OpenAI (GPT-4o)"
-echo "  3) 🟤 Anthropic (Claude)"
-echo "  4) ⏭️  Skip for now"
+echo "Get your free API key at: https://aistudio.google.com/app/apikey"
 echo ""
 
-read -p "Enter choice (1-4): " choice
+read -p "Paste your Google AI Studio API key: " api_key
 
-case $choice in
-    1)
-        echo ""
-        echo -e "${BLUE}📝 Google AI Studio Setup${NC}"
-        echo ""
-        echo "Get your free API key at: https://aistudio.google.com/app/apikey"
-        echo ""
-        read -p "Paste your API key: " api_key
-        
-        if [ -n "$api_key" ]; then
-            # Remove old entries and add new ones
-            grep -v "AIDER_MODEL\|GOOGLE_API_KEY" ~/.bashrc > ~/.bashrc.tmp
-            echo "" >> ~/.bashrc.tmp
-            echo "# Google AI Studio API Key for Aider" >> ~/.bashrc.tmp
-            echo "export GOOGLE_API_KEY=\"$api_key\"" >> ~/.bashrc.tmp
-            echo "export AIDER_MODEL=google/gemini-2.5-flash" >> ~/.bashrc.tmp
-            mv ~/.bashrc.tmp ~/.bashrc
-            
-            echo ""
-            echo -e "${GREEN}✅ API key saved!${NC}"
-        fi
-        ;;
-    2)
-        echo ""
-        echo -e "${BLUE}📝 OpenAI Setup${NC}"
-        echo ""
-        echo "Get your API key at: https://platform.openai.com/api-keys"
-        echo ""
-        read -p "Paste your API key: " api_key
-        
-        if [ -n "$api_key" ]; then
-            grep -v "OPENAI_API_KEY" ~/.bashrc > ~/.bashrc.tmp
-            echo "" >> ~/.bashrc.tmp
-            echo "export OPENAI_API_KEY=\"$api_key\"" >> ~/.bashrc.tmp
-            mv ~/.bashrc.tmp ~/.bashrc
-            
-            echo ""
-            echo -e "${GREEN}✅ API key saved!${NC}"
-        fi
-        ;;
-    3)
-        echo ""
-        echo -e "${BLUE}📝 Anthropic Setup${NC}"
-        echo ""
-        echo "Get your API key at: https://console.anthropic.com/settings/keys"
-        echo ""
-        read -p "Paste your API key: " api_key
-        
-        if [ -n "$api_key" ]; then
-            grep -v "ANTHROPIC_API_KEY\|AIDER_MODEL" ~/.bashrc > ~/.bashrc.tmp
-            echo "" >> ~/.bashrc.tmp
-            echo "export ANTHROPIC_API_KEY=\"$api_key\"" >> ~/.bashrc.tmp
-            echo "export AIDER_MODEL=claude-sonnet-4-20250514" >> ~/.bashrc.tmp
-            mv ~/.bashrc.tmp ~/.bashrc
-            
-            echo ""
-            echo -e "${GREEN}✅ API key saved!${NC}"
-        fi
-        ;;
-    4)
-        echo ""
-        echo -e "${YELLOW}⏭️  Skipped. Run 'bash install.sh' later to configure.${NC}"
-        ;;
-esac
+if [ -n "$api_key" ]; then
+    grep -v "AIDER_MODEL\|GOOGLE_API_KEY" ~/.bashrc > ~/.bashrc.tmp
+    echo "" >> ~/.bashrc.tmp
+    echo "# Google AI Studio API Key for Aider" >> ~/.bashrc.tmp
+    echo "export GOOGLE_API_KEY=\"$api_key\"" >> ~/.bashrc.tmp
+    echo "export AIDER_MODEL=google/gemini-2.5-flash" >> ~/.bashrc.tmp
+    mv ~/.bashrc.tmp ~/.bashrc
+    
+    echo ""
+    echo -e "${GREEN}✅ Google AI API key saved!${NC}"
+else
+    echo ""
+    echo -e "${YELLOW}⏭️  No key entered. Run 'bash install.sh' later to configure.${NC}"
+fi
 
 # Mark as installed
 touch "$INSTALL_FLAG"
