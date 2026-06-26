@@ -61,7 +61,7 @@ pip install "numpy>=2.0.0" "aiohttp>=3.9.0" "requests>=2.31.0" "urllib3>=2.0.0"
 echo ""
 echo -e "${YELLOW}[6/7] Installing Aider Chat...${NC}"
 pip install aider-chat --no-deps
-pip install GitPython prompt-toolkit Pygments rich tqdm configargparse PyYAML networkx diskcache pytest tiktoken
+pip install GitPython prompt-toolkit Pygments rich tqdm configargparse PyYAML networkx diskcache pytest tiktoken openai
 
 # Step 7: Setup API Key
 echo ""
