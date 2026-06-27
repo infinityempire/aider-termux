@@ -60,8 +60,8 @@ pip install "numpy>=2.0.0" "aiohttp>=3.9.0" "requests>=2.31.0" "urllib3>=2.0.0"
 # Step 6: Install Aider with Google AI support
 echo ""
 echo -e "${YELLOW}[6/7] Installing Aider Chat...${NC}"
-pip install aider-chat --no-deps
-pip install GitPython prompt-toolkit Pygments rich tqdm configargparse PyYAML networkx diskcache pytest tiktoken google-generativeai openai litellm
+pip install "setuptools<75"
+pip install "git+https://github.com/paul-gauthier/aider.git"
 
 # Step 7: Setup Google AI API Key
 echo ""
